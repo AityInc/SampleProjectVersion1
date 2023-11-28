@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth-options";
 import { getUser } from "@/lib/provider";
-const title = process.env.APP_TITLE!
+const title = process.env.APP_TITLE!;
 const Logo = () => (
   <div>
     <a className="btn btn-ghost text-xl normal-case" href="/">
@@ -25,7 +25,13 @@ export const Navbar = async () => {
       <div className="flex items-center justify-between">
         <Logo />
         <div className="flex items-center">
-          {user && user.admin? <a href={`/view-queries/${user?.id}`} className="btn btn-ghost">Respond to queries</a>:<></>}
+          {user && user.admin ? (
+            <a href={`/view-queries/${user?.id}`} className="btn btn-ghost">
+              Respond to queries
+            </a>
+          ) : (
+            <></>
+          )}
           <a href={`/view-cases/${user?.id}`} className="btn btn-ghost">
             View Cases
           </a>

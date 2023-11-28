@@ -59,7 +59,7 @@ const CreateCase = ({ params }: { params: { userid: string } }) => {
         <input
           type="input"
           name="userid"
-          value={params.userid}
+          defaultValue={params.userid}
           className="hidden"
         />
         <div className="mx-auto max-w-md rounded-md bg-white text-center">

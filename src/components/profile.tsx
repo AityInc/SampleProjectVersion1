@@ -36,21 +36,17 @@ export const Profile = async () => {
     return <SigninButton />;
   }
 
-  let user = await getUser({ email: session.user?.email });
-  let errorFetchingUser = false;
+  const user = await getUser({ email: session.user?.email });
+
   if (user === null || user === undefined) {
     redirect("/api/auth/signin?callbackUrl=/");
   }
 
-  let name = "";
-  let src = "";
-  if (session.user && session.user.name && session.user.image) {
-    name = session.user.name;
-    src = session.user.image;
-  } else {
-    name = (session as any).name;
-    src = (session as any).image || (session as any).picture;
-  }
+  const name = user.name!;
+  const src = session.user?.image
+    ? session.user.image
+    : (session as any).image || (session as any).picture;
+  console.log(`src: ${src}`);
   return (
     <div className="dropdown dropdown-end">
       <label tabIndex={0} className="avatar btn btn-circle btn-ghost">

@@ -6,7 +6,7 @@ const origin = process.env.NEXTAUTH_URL;
 
 export const POST = async (req: NextRequest) => {
   const { caseid, filename, filetype } = await req.json();
-  
+
   const createdAt = new Date();
   const fileData = await createFile({
     caseId: caseid,

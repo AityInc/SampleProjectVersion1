@@ -5,7 +5,7 @@ const origin = process.env.NEXTAUTH_URL;
 
 export const POST = async (req: Request) => {
   const request = await req.text();
-  
+
   const body = Object.fromEntries(new URLSearchParams(request));
   const content = body.content;
   const userid = body.userid;

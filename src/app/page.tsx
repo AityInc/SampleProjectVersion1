@@ -6,7 +6,7 @@ export default async function Home() {
     session && session.user && session.user.name && session.user.name.length > 1
       ? session.user.name.toUpperCase()
       : "there";
-  
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">

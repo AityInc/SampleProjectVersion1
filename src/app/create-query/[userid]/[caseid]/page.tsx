@@ -48,13 +48,13 @@ const CreateQuery = ({
         <input
           type="input"
           name="caseid"
-          value={params.caseid}
+          defaultValue={params.caseid}
           className="hidden"
         />
         <input
           type="input"
           name="userid"
-          value={params.userid}
+          defaultValue={params.userid}
           className="hidden"
         />
         <div className="mx-auto max-w-md rounded-md bg-white text-center">

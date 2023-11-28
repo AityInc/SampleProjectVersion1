@@ -91,14 +91,17 @@ const FileUploadComponent = ({
       const uploadResponse = await fetch(url, {
         method: "POST",
         body: formData,
-      
       });
       if (uploadResponse.ok) {
         setUploadSuccess(true);
         setUploadFailed(false);
         const response = await fetch("/api/record-uploaded-file", {
           method: "POST",
-          body: JSON.stringify({ filename: file.name, filetype: file.type, caseid:caseid  }),
+          body: JSON.stringify({
+            filename: file.name,
+            filetype: file.type,
+            caseid: caseid,
+          }),
         });
       } else {
         console.error("S3 Upload Error:", uploadResponse);

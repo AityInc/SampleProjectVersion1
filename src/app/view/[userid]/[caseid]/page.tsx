@@ -1,22 +1,13 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth-options";
 import { getCase } from "@/lib/provider";
 import { IoIosCreate } from "react-icons/io";
 import { QueryDisplayComponent } from "@/components/QueryDisplayComponent";
-import { FileComponent } from "../../../../components/FileComponent";
+import { FileComponent } from "@/components/FileComponent";
 const Home = async ({
   params,
 }: {
   params: { caseid: string; userid: string };
 }) => {
-  const session = await getServerSession(authOptions);
   const selectedCase = await getCase(params.caseid);
-  const baseurl = process.env.NEXTAUTH_URL!;
-  const userName =
-    session && session.user && session.user.name && session.user.name.length > 1
-      ? session.user.name.toUpperCase()
-      : "there";
-  //const selectedCase = cases.find((caseItem) => caseItem.id === params.caseid);
 
   return (
     <div className=" bg-base-200 p-4">
@@ -50,12 +41,12 @@ const Home = async ({
                   Queries:
                 </td>
                 <td className="flex justify-between bg-white py-2">
-                  <div className=" align-middle min-w-[80%]">
+                  <div className=" min-w-[80%] align-middle">
                     <QueryDisplayComponent queries={selectedCase.Query} />
                   </div>
                   <div
                     className="tooltip tooltip-left"
-                    data-tip="click to create case"
+                    data-tip="click to create query"
                   >
                     <a
                       className="btn btn-ghost btn-neutral btn-md"
@@ -72,12 +63,11 @@ const Home = async ({
                 </td>
                 <td className="flex justify-between bg-white py-2">
                   <div className=" align-middle">
-                    
-                    <FileComponent files={selectedCase.files}/>
+                    <FileComponent files={selectedCase.files} />
                   </div>
                   <div
                     className="tooltip tooltip-left"
-                    data-tip="click to create case"
+                    data-tip="click to upload files"
                   >
                     <a
                       href={`/file-upload/${params.userid}/${selectedCase.id}`}
@@ -97,4 +87,3 @@ const Home = async ({
 };
 
 export default Home;
-

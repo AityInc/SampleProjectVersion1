@@ -92,9 +92,12 @@ export const createQuery = async (
 };
 
 export const getQuery = async (queryId: string): Promise<Query | null> => {
-  return prisma.query.findUnique({ where: { id: queryId }, include:{
-    case: true
-  }});
+  return prisma.query.findUnique({
+    where: { id: queryId },
+    include: {
+      case: true,
+    },
+  });
 };
 
 export const updateQuery = async (
@@ -132,14 +135,14 @@ export async function getCasesForUser(userId: string) {
   }
 }
 
-export async function getUnAnsweredQueries(){
+export async function getUnAnsweredQueries() {
   const queries = await prisma.query.findMany({
     where: {
-      response: null
+      response: null,
     },
-    include:{
-      case: true
-    }
-  })
-  return queries
+    include: {
+      case: true,
+    },
+  });
+  return queries;
 }

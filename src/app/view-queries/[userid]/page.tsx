@@ -6,7 +6,7 @@ import CreateCase from "@/components/CreateCase";
 const Home = async ({ params }: { params: { userid: string } }) => {
   const session = await getServerSession(authOptions);
   const queries = await getUnAnsweredQueries();
-  
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
@@ -16,7 +16,9 @@ const Home = async ({ params }: { params: { userid: string } }) => {
           </h1>
 
           <div className="mb-4 flex items-center justify-between">
-            <p className="text-left">You have {queries.length} Unanswered queries</p>
+            <p className="text-left">
+              You have {queries.length} Unanswered queries
+            </p>
           </div>
 
           <div className="overflow-x-auto">
@@ -35,9 +37,7 @@ const Home = async ({ params }: { params: { userid: string } }) => {
                   <th className="border border-gray-400 p-4 text-gray-100">
                     Created At
                   </th>
-                  <th className="border border-gray-400 p-4 text-gray-100">
-                    
-                  </th>
+                  <th className="border border-gray-400 p-4 text-gray-100"></th>
                 </tr>
               </thead>
               <tbody>
